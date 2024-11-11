@@ -2,48 +2,16 @@ package main
 
 import (
 	"fmt"
+
+	"github.com/9Neechan/OOP-practice/OOP"
+	"github.com/9Neechan/OOP-practice/concurrency"
 )
 
 func main() {
-	a := NewAccount("Маша")
-	a.SetBalance(100)
+	OOP.Test_OOP()
 
-	fmt.Println(a.GetBalance()) // 100
+	fmt.Println("--------------------------")
 
-	err := a.Deposit(10)
-	if err != nil {
-		panic(err) // вывод сообщения об ошибке с её описанием
-	}
-
-	err = a.Withdraw(100)
-	if err != nil {
-		panic(err) // вывод сообщения об ошибке с её описанием
-	}
-
-	fmt.Println(a.GetBalance()) // 10
-
-
-
-	// создание содержимого склада
-	storage := &Storage{
-		Products: make(map[int]Product),
-	}
-
-	// добавление товаров на склад
-	err = storage.AddProduct(Product{ID: 1, Name: "Ноутбук", Quantity: 10})
-	if err != nil {
-		fmt.Print("Ошибка при добавлении товара: ", err)
-		return
-	}
-
-	fmt.Println(storage.Products[1]) // {1 Ноутбук 10}
-
-	// изменение количества товаров на складе
-	err = storage.UpdateQuantity(1, -5) // продали 5 ноутбуков
-	if err != nil {
-		fmt.Print("Ошибка при изменении количества товара: ", err)
-		return
-	}
-
-	fmt.Println(storage.Products[1]) // {1 Ноутбук 5}
+	//concurrency.Test_conc()
+	concurrency.Test_ch()
 }
